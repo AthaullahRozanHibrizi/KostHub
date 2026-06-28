@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import prisma from '@/lib/prisma';
 
 export async function POST(req) {
@@ -25,12 +25,13 @@ export async function POST(req) {
         name,
         email,
         password: hashedPassword,
-        role: role === 'owner' ? 'OWNER' : 'SEEKER'
+        role: role === 'owner' ? 'pemilik' : 'pencari'
       }
     });
 
     return NextResponse.json({ message: "User created", user: { id: user.id, email: user.email } }, { status: 201 });
   } catch (error) {
+    console.error("Register Error:", error);
     return NextResponse.json({ message: "An error occurred" }, { status: 500 });
   }
 }

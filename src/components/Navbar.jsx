@@ -15,7 +15,7 @@ export default function Navbar() {
         
         <nav className={styles.navLinks}>
           <Link href="/search" className={styles.link}>Cari Kos</Link>
-          {session?.user?.role === 'OWNER' && (
+          {session?.user?.role === 'pemilik' && (
             <Link href="/dashboard" className={styles.link}>Dashboard Pemilik</Link>
           )}
         </nav>

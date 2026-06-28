@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -15,7 +15,7 @@ model User {
   name      String
   email     String     @unique
   password  String
-  role      String     @default("SEEKER") // "SEEKER" or "OWNER"
+  role      String     @default("pencari") // "pencari" or "pemilik"
   kosList   Kos[]
   reviews   Review[]
   favorites Favorite[]

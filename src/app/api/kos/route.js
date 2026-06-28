@@ -31,7 +31,7 @@ export async function POST(request) {
     // For this demo, we'll expect ownerId in the request body, or fallback to the first user if missing.
     let ownerId = data.ownerId;
     if (!ownerId) {
-       const user = await prisma.user.findFirst({ where: { role: 'OWNER' }});
+       const user = await prisma.user.findFirst({ where: { role: 'pemilik' }});
        if (!user) return NextResponse.json({ success: false, message: 'No owner found' }, { status: 400 });
        ownerId = user.id;
     }

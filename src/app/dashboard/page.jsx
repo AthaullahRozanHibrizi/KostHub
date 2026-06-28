@@ -23,7 +23,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (status === 'unauthenticated') {
       router.push('/login');
-    } else if (status === 'authenticated' && session.user.role !== 'OWNER') {
+    } else if (status === 'authenticated' && session.user.role !== 'pemilik') {
       router.push('/');
     } else if (status === 'authenticated') {
       fetchProperties();
@@ -109,7 +109,7 @@ export default function Dashboard() {
   const totalAvailableRooms = properties.reduce((sum, p) => sum + p.availableRooms, 0);
 
   if (status === 'loading' || loading) return <p style={{textAlign:'center', marginTop:'2rem'}}>Loading...</p>;
-  if (!session || session.user.role !== 'OWNER') return null;
+  if (!session || session.user.role !== 'pemilik') return null;
 
   return (
     <>
