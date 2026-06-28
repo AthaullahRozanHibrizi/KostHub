@@ -1,0 +1,82 @@
+.container {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 450px;
+  padding: var(--space-8);
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.header h2 {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-2);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.roleToggle {
+  display: flex;
+  background: var(--color-border);
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.roleBtn {
+  flex: 1;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.activeRole {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form {
+  margin-bottom: var(--space-6);
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  font-size: 1.125rem;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.toggleBtn {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-left: var(--space-2);
+}
+
+.toggleBtn:hover {
+  text-decoration: underline;
+}

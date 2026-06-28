@@ -1,0 +1,148 @@
+.layout {
+  display: flex;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-4);
+  min-height: 80vh;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.ownerName {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.ownerRole {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.navItem {
+  text-align: left;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.navItem:hover {
+  background: rgba(79, 70, 229, 0.05);
+  color: var(--color-primary);
+}
+
+.activeNav {
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--color-primary);
+}
+
+.mainContent {
+  flex-grow: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.header h2 {
+  font-size: 1.75rem;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  padding: var(--space-4);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.statusActive {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.editBtn {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.editBtn:hover {
+  text-decoration: underline;
+}
+
+.formCard {
+  padding: var(--space-6);
+  max-width: 600px;
+}
+
+.formCard h3 {
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}
