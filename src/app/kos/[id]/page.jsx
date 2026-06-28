@@ -2,39 +2,23 @@ import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import DetailClient from './DetailClient';
 import styles from './detail.module.css';
-import prisma from '@/lib/prisma';
+import { kv } from '@vercel/kv'; // Ganti import prisma dengan kv
 import { notFound } from 'next/navigation';
 
 export default async function KosDetail({ params }) {
   const { id } = await params;
   
-  // Increment views
-  await prisma.kos.update({
-    where: { id },
-    data: { views: { increment: 1 } }
-  }).catch(() => {}); // ignore error if id not found here
-
-  const kos = await prisma.kos.findUnique({
-    where: { id },
-    include: {
-      images: true,
-      facilities: true,
-      owner: true,
-      reviews: {
-        include: { user: true },
-        orderBy: { createdAt: 'desc' }
-      },
-      favorites: true,
-    }
-  });
+  // Mengambil data dari Vercel KV (Redis)
+  const kos = await kv.get(`kos:${id}`);
 
   if (!kos) {
     return notFound();
   }
 
-  const mainImage = kos.images[0]?.url || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200';
-  const subImage1 = kos.images[1]?.url || 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80&w=800';
-  const subImage2 = kos.images[2]?.url || 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&q=80&w=800';
+  // Karena data di KV bersifat sederhana, pastikan struktur gambarnya sesuai
+  const mainImage = kos.images?.[0]?.url || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200';
+  const subImage1 = kos.images?.[1]?.url || 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80&w=800';
+  const subImage2 = kos.images?.[2]?.url || 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&q=80&w=800';
 
   return (
     <>
@@ -58,9 +42,7 @@ export default async function KosDetail({ params }) {
           </div>
         </div>
 
-        {/* Pass down to client component for interactivity */}
         <DetailClient kos={kos} />
-
       </main>
       <Footer />
     </>
