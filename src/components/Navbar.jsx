@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className={styles.header}>
       <div className={`container ${styles.navbar}`}>
         <Link href="/" className={styles.logo}>
-          Kost<span className="text-gradient">Hub</span>
+          <img src="/logo.png" alt="KostHub Logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
         </Link>
         
         <nav className={styles.navLinks}>
